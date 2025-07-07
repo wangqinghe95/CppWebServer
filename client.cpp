@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include "util.hpp"
 
+#define BUFFER_SIZE (1024)
+
 int main()
 {
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -22,7 +24,7 @@ int main()
 
     while (true)
     {
-        char buf[2024];
+        char buf[BUFFER_SIZE];
         bzero(&buf, sizeof(buf));
         scanf("%s", buf);
 
