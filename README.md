@@ -30,3 +30,10 @@ epoll 和 socket 的结合步骤是：
 1. 创建一个服务器接受客户端请求的 socket，即 server_fd，然后执行绑定，监听。
 2. 创建一个 epoll 的文件描述符，和一个 epoll 事件的结构体，将 server_fd 的监听事件加入到 epoll 中
 3. 等待 epoll 的事件返回。如果有客户端新连接事件，则 accept，并且同时将请求的客户端 fd 加入到 epoll 的监听事件中，如果是客户端发送消息，则执行 read/write。
+
+## day04
+
+使用类，将管理地址的 InetAddress，Socket，Epoll 模块分开。
+想起来一个点：socket 监听的 fd，和 Epoll 的 wait fd 之间的逻辑关系是什么？
+socket 的 fd 是监听外部客户端请求事件，而 epoll 的 fd 则是监视 socket
+fd 是否有事件发生。
